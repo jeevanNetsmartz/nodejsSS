@@ -2,10 +2,6 @@ var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-app.get('/view', (req, res) => {
-    res.sendFile(__dirname + '/display.html');
-})
-
 io.on('connection', (socket)=> {
     console.log("socket connected to http://localhost:8080");
     socket.on("join-message", (roomId) => {
